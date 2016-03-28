@@ -11,22 +11,33 @@ namespace GameOfLife.tests
         public void EnsureWorldClassisInstantiated()
         {
             World world = new World(5);
-            Assert.AreEqual(2, world.nomber);           
+            Assert.IsNotNull(world.worldSpots);    
         }
 
         [TestMethod]
-        public void EnsureWorldDictionaryHasRightSpaces()
+        public void EnsureWorldCreatingCorrectNumberSpaces()
         {
             World world = new World(5);
-            bool ContainsFirstSpace = world.worldSpots.ContainsKey("0,0");
-            Assert.IsTrue(ContainsFirstSpace);
+            Assert.AreEqual(25, world.worldSpots.Length);
+        }
+
+        [TestMethod]
+        public void EnsureWorldSpotsHasFirstSpace()
+        {
+            World world = new World(5);
+            Assert.AreEqual(0, world.worldSpots[0, 0]);
         }
         [TestMethod]
-        public void EnsureWorldDictionaryHasLastSpace()
+        public void EnsureWorldSpotsHasLastSpace()
         {
             World world = new World(5);
-            bool ContainsLastSpace = world.worldSpots.ContainsKey("4,4");
-            Assert.IsTrue(ContainsLastSpace);
+            Assert.AreEqual(0, world.worldSpots[4, 4]);
+        }
+        [TestMethod]
+        public void EnsureWorldSpaceNotDefinedisZero()
+        {
+            World world = new World(5);
+            Assert.AreEqual(0, world.worldSpots[2, 2]);
         }
     }
 }
