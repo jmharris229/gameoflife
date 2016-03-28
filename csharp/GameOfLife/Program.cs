@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace GameOfLife
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            World newWorld = new World(5);
+                     
         }
     }
 }
