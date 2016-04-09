@@ -10,10 +10,13 @@ namespace GameOfLife
     public class World
     {
         public int[,] worldSpots { get; set; }
+        public int[,] limboWorldSpots { get; set; }
 
         public World(int size)
         {
             worldSpots = new int[size, size];
+            limboWorldSpots = new int[size, size];
         }
+
     }
 }
