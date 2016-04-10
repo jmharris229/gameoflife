@@ -71,7 +71,7 @@ namespace GameOfLife.tests
             Rules rules = new Rules();
             Neighborhoods neighborhoods = new Neighborhoods();
 
-            World OsWorld = neighborhoods.ThreeCellOscillator(world);
+            World OsWorld = neighborhoods.threeCellOscillator(world);
             int neighborsAmount = rules.countNeighbors(3, 3, OsWorld);
             Assert.AreEqual(2, neighborsAmount);
         }
@@ -82,7 +82,7 @@ namespace GameOfLife.tests
             Rules rules = new Rules();
             Neighborhoods neighborhoods = new Neighborhoods();
 
-            World OsWorld = neighborhoods.ThreeCellOscillator(world);
+            World OsWorld = neighborhoods.threeCellOscillator(world);
             Assert.IsTrue(OsWorld.worldSpots[3, 3] == 1);
             Assert.IsTrue(OsWorld.worldSpots[2, 3] == 1);
             Assert.IsTrue(OsWorld.worldSpots[4, 3] == 1);
@@ -95,7 +95,7 @@ namespace GameOfLife.tests
             Rules rules = new Rules();
             Neighborhoods neighborhoods = new Neighborhoods();
 
-            World oscWorld = neighborhoods.ThreeCellOscillator(world);
+            World oscWorld = neighborhoods.threeCellOscillator(world);
             while (rules.days < 5)
             {
                 for (int row = 0; row < oscWorld.worldSpots.GetLength(0); row++)
@@ -112,7 +112,7 @@ namespace GameOfLife.tests
                 rules.days++;
             }
 
-            World OsWorld = neighborhoods.ThreeCellOscillator(world);
+            World OsWorld = neighborhoods.threeCellOscillator(world);
             Assert.IsTrue(OsWorld.worldSpots[3, 3] == 1);
             Assert.IsTrue(OsWorld.worldSpots[3, 2] == 1);
             Assert.IsTrue(OsWorld.worldSpots[3, 4] == 1);

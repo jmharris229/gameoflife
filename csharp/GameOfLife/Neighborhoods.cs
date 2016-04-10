@@ -35,7 +35,7 @@ namespace GameOfLife
             return existingWorld;
         }
 
-        public World ThreeCellOscillator(World existingWorld)
+        public World threeCellOscillator(World existingWorld)
         {
             int row = 3;
             int col = 3;
@@ -61,8 +61,28 @@ namespace GameOfLife
             return existingWorld;
         }
 
+        public World random(World existingWorld)
+        {
+            Random random = new Random();
+            for (int row = 0; row < existingWorld.worldSpots.GetLength(0); row++)
+            {
+                for (int col = 0; col < existingWorld.worldSpots.GetLength(1); col++)
+                {
+                    int randomNumber = (int)Math.Round(random.NextDouble());
 
+                    if (randomNumber == 1)
+                    {
+                        existingWorld.worldSpots[row, col] = 1;
+                    }
+                    else
+                    {
+                        existingWorld.worldSpots[row, col] = 0;
+                    }
+                }
+            }
 
+            return existingWorld;
+        }
 
     }
 }

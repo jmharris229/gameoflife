@@ -41,7 +41,7 @@ namespace GameOfLife
                     rules.startGame(honeyCombWorld);
                     break;
                 case 3:
-                    World threeCellOsWorld = neighborhoods.ThreeCellOscillator(newWorld);
+                    World threeCellOsWorld = neighborhoods.threeCellOscillator(newWorld);
                     rules.displayGrid(threeCellOsWorld);
                     Console.WriteLine(keyMessage);
                     Console.ReadKey();
@@ -55,10 +55,18 @@ namespace GameOfLife
                     rules.startGame(toad);
                     break;
                 case 5:
-                    break;
-                
+                    World random = neighborhoods.random(newWorld);
+                    rules.displayGrid(random);
+                    Console.WriteLine(keyMessage);
+                    Console.ReadKey();
+                    rules.startGame(random);
+                    break;                
                 default:
-
+                    World defaultRandom = neighborhoods.random(newWorld);
+                    rules.displayGrid(defaultRandom);
+                    Console.WriteLine(keyMessage);
+                    Console.ReadKey();
+                    rules.startGame(defaultRandom);
                     break;
             }     
         }
