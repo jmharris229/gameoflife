@@ -149,7 +149,7 @@ namespace GameOfLife
                 days++;
             }
 
-            consoleBoard.Append("Day " + days);
+            consoleBoard.Append("Day " + days + "\r\n");
 
             for (int row = 0; row < updatedWorld.worldSpots.GetLength(0); row++)
             {
@@ -158,7 +158,6 @@ namespace GameOfLife
                     if (updatedWorld.worldSpots[row,col] == 1)
                     {
                         consoleBoard.Append("*");
-                        //Console.Write("*");
                     }
                     else
                     {
@@ -169,12 +168,7 @@ namespace GameOfLife
             }
             Console.WriteLine(consoleBoard);
 
-            stopper++;
-            if (stopper == 2)
-            {
-                Console.ReadKey();
-            }
-
+            System.Threading.Thread.Sleep(500);
 
         }
     }

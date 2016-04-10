@@ -10,7 +10,7 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            World newWorld = new World(15);
+            World newWorld = new World(30);
             Neighborhoods neighborhoods = new Neighborhoods();
             Rules rules = new Rules();
 
