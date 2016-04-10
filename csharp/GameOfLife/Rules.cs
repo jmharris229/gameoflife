@@ -12,8 +12,10 @@ namespace GameOfLife
         int x { get; set; }
         int y { get; set; }
         int stopper { get; set; }
+        bool day0 { get; set; }
         public Rules()
         {
+            day0 = true;
             days = 0;
             x = 0;
             y = 0;
@@ -22,7 +24,8 @@ namespace GameOfLife
 
         public void startGame(World filledWorld)
         {
-            while (stopper < 5)
+            day0 = false;
+            while (stopper < 3)
             {
                 for (int row = 0; row < filledWorld.worldSpots.GetLength(0); row++)
                 {
@@ -139,8 +142,14 @@ namespace GameOfLife
 
         public void displayGrid(World updatedWorld)
         {
-           Console.Clear();
+            Console.Clear();
+            StringBuilder consoleBoard = new StringBuilder();
+            if (!day0)
+            {
+                days++;
+            }
 
+            consoleBoard.Append("Day " + days);
 
             for (int row = 0; row < updatedWorld.worldSpots.GetLength(0); row++)
             {
@@ -148,20 +157,24 @@ namespace GameOfLife
                 {
                     if (updatedWorld.worldSpots[row,col] == 1)
                     {
-                        Console.Write("*");
+                        consoleBoard.Append("*");
+                        //Console.Write("*");
                     }
                     else
                     {
-                        Console.Write(" ");
+                        consoleBoard.Append(" ");
                     }
-
                 }
-                Console.WriteLine();
+                consoleBoard.Append("\r\n");
             }
-            days++;
-            Console.WriteLine("\r{0} days", days);
-            //stopper++;
-            //Console.ReadKey();
+            Console.WriteLine(consoleBoard);
+
+            stopper++;
+            if (stopper == 2)
+            {
+                Console.ReadKey();
+            }
+
 
         }
     }
